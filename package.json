@@ -1,0 +1,19 @@
+{
+  "name": "simple-rest-api",
+  "version": "1.0.0",
+  "main": "app.js",
+  "dependencies": {
+    "axios": "^0.19.1",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.2",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.5"
+  },
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
