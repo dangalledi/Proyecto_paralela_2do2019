@@ -9,37 +9,27 @@ const app = express();
 const get = require('./utils/get');
 const menDistancia = require('./utils/menDistancia');
 
-const dirAle = [{
-  latitud: '-33.4839809',
-  longitud: '-70.6789174'
-}]
 
-const dirDani = [{
-  latitud: '-33.4777787',
-  longitud: '-70.6254457'
-}]
-
-console.log(dirAle);
-
-const getInfo = async (direccion) => {
+async function getInfo (direccionInicio, direccionDestino){
   try{
-      //const dir = await get.getCoordenadas(direccion);
+      //Busca en paralelo ambas direcciones las coordenadas respectivas
+      const direcciones = await Promise.all([get.getCoordenadas(direccionInicio), get.getCoordenadas(direccionDestino)]);
 
-      //const lat = await dir.geolocation.latitude;
-      //const long = await dir.geolocation.longitude;
-      //console.log(dir);
-      //console.log(`la latitud es ${lat} y la longitud es ${long}`);
+      console.log(direcciones[1].lat);
 
-      const distancia = await menDistancia.menDistancia(dirAle);
-      console.log(distancia);
+      //Busca en paralelo ambas direcciones los paraderos mas cercanos
+      //const distancias = await Promise.all([menDistancia.menDistancia(direcciones[0]), menDistancia.menDistancia(direcciones[1])]);
+
+      //Busca mach de paraderos segun las micros 
+
 
     } catch (e) {
       console.log(e);
-      console.log(`No se pudo obtener informacion de ${direccion}`)
+      console.log(`No se pudo obtener informacion de ${direccionInicio} y ${direccionDestino}`)
     }
 }
 
-getInfo('palestrina 2710, san joaquin');
+getInfo('palestrina 2710, san joaquin', '1 de mayo 4205, pedro aguirre cerda');
 
 /*// settings
 const port = process.env.PORT || 3000;
