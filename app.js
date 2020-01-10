@@ -4,7 +4,7 @@
 //docker run -it -p 9001:3000 -v "$(pwd):/app" node-api
 const express = require("express");
 const app = express();
-const rp = require('request-promise');
+//const rp = require('request-promise');
 
 //  Utils
 const get = require('./utils/get');
@@ -26,8 +26,7 @@ const getInfo = async (direccion) => {
 
 getInfo('palestrina 2710, san joaquin');
 
-
-// settings
+/*// settings
 const port = process.env.PORT || 3000;
 
 app.get("/", (req, res) => res.send(`Hello jiji!`));
@@ -37,3 +36,4 @@ app.listen(app.get('port'), () => {
   console.log(`Server on port ${port}`);
 
 });
+*/
