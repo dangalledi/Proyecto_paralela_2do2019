@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-// Menor distancia entre punto de inicio y una parada
+// Menor distancia entre punto de inicio y 2 paradas mas cercanas
 function menDistancia (direccion) {
 
     const json_paradas = fs.readFileSync(path.join(__dirname,'../data/paradas.json' ), 'utf-8');
@@ -13,15 +13,26 @@ function menDistancia (direccion) {
         var distancia = Math.sqrt( Math.pow(latParadero,2) + Math.pow(longParadero,2));
 
         if (menDist >= distancia) {
-            menDist = distancia
+            menDist = distancia;
+
+            var paraderoCodigo1 = paraderoCodigo;
+            var paraderoDireccion1 = paraderoDireccion;
+            var paraderoBuses1 = paraderoBuses;
+
             var paraderoCodigo = paradas[i].codigo;
             var paraderoDireccion = paradas[i].direccion;
+            var paraderoBuses = paradas[i].buses;
+
+            var paraderos= {
+                paraderoCodigo,
+                paraderoDireccion,
+                paraderoBuses,
+                paraderoCodigo1,
+                paraderoDireccion1,
+                paraderoBuses1
+            };
         }
-    } return {
-        menDist,
-        paraderoCodigo,
-        paraderoDireccion
-    };
+    } return paraderos
 }
 
 module.exports = {
