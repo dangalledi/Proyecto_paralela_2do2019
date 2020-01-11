@@ -1,9 +1,8 @@
 //npm install 
 //docker build -t node-api .
 //docker run -it -p 9001:3000 -v "$(pwd):/app" node-api
-//const express = require("express");
-//const app = express();
-//const rp = require('request-promise');
+const express = require("express");
+const app = express();
 
 //  Utils
 const get = require('./utils/get');
@@ -22,25 +21,36 @@ async function getInfo (direccionInicio, direccionDestino){
     console.log(paraderos);
 
     //Busca mach de paraderos segun las micros 
-    const buses = await mach.getBuses(paraderos);
+    const bus = await mach.getBuses(paraderos);
+    return bus;
 
-    console.timeEnd('Measuring time')
   } catch (e) {
     console.log(e);
     console.log(`No se pudo obtener informacion de ${direccionInicio} y ${direccionDestino}`)
   }
 }
 
-getInfo('palestrina 2710, san joaquin', 'Gral Rondizzoni 1670,santiago');
+//getInfo('palestrina 2710, san joaquin', 'Gral Rondizzoni 1670,santiago');
 
-/*// settings
+/// Settings
 const port = process.env.PORT || 3000;
 
+
+// Routes 
 app.get("/", (req, res) => res.send(`Hello jiji!`));
 
-// starting the server
+app.post('/', (req, res) => {
+  const { direccionInicio , direccionDestino } = req.body;
+  if (direccionInicio && direccionDestino ) {
+    var recorrido = getInfo(direccionInicio, direccionDestino);
+    res.send(recorrido);
+  } else {
+      res.status(500).json({error: 'Hay un error'});
+  }
+});
+
+// Starting the server
 app.listen(app.get('port'), () => {
   console.log(`Server on port ${port}`);
 
 });
-*/
