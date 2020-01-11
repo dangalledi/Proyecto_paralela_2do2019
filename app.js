@@ -1,6 +1,6 @@
 //npm install 
 //docker build -t node-api .
-//docker run -it -p 9001:3000 -v "$(pwd):/app" node-api
+//docker run --rm -it -p 3000:3000 -v "$(pwd):/app" node-api
 const express = require("express");
 const app = express();
 
@@ -32,10 +32,6 @@ async function getInfo (direccionInicio, direccionDestino){
 
 //getInfo('palestrina 2710, san joaquin', 'Gral Rondizzoni 1670,santiago');
 
-/// Settings
-const port = process.env.PORT || 3000;
-
-
 // Routes 
 app.get("/", (req, res) => res.send(`Hello jiji!`));
 
@@ -50,7 +46,6 @@ app.post('/', (req, res) => {
 });
 
 // Starting the server
-app.listen(app.get('port'), () => {
-  console.log(`Server on port ${port}`);
-
+app.listen(3000, () => {
+  console.log("Server on port 3000");
 });

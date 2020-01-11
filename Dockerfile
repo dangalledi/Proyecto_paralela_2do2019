@@ -11,7 +11,6 @@ RUN npm install
 # We then copy the rest of our application
 # to the app direcoty
 COPY . /app
-EXPOSE 3000
 # We start our application by calling
 # npm start.
 CMD ["npm", "start"]
