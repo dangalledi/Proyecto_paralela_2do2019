@@ -17,7 +17,7 @@ $ docker build -t node-api .
 ```
 
 ```bash
-$ docker run --rm -it -p 9001:3000 -v "$(pwd):/app" node-api
+$ docker run --rm -it -p 3000:3000 -v "$(pwd):/app" node-api
 ```
 
 ### Integrantes del proyecto 
