@@ -1,6 +1,7 @@
 # Proyecto computación paralela
 
-Back del proyecto semestral de computación paralela.
+Back del proyecto semestral de computación paralela. 
+La app de este proyecto se aloja en el siguiente repositorio [Link](https://github.com/AlexandraOliv14/AppMovil-Buses)
 
 ## Instalación
 
@@ -20,6 +21,7 @@ $ docker build -t node-api .
 $ docker run --rm -it -p 3000:3000 -v "$(pwd):/app" node-api
 ```
 
-### Integrantes del proyecto 
-- Daniela Galleguillos Díaz 
+### Integrantes del proyecto
 - Alexandra Olivares Solis
+- Daniela Galleguillos Díaz 
+
