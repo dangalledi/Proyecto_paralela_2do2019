@@ -7,17 +7,17 @@ Back del proyecto semestral de computación paralela.
 Primero instalamos las dependencias del proyecto 
 
 ```bash
-npi install
+$ npi install
 ```
 
 ## Uso
 Este proyecto se puede ejecutar desde un container de docker 
 ```bash
-docker build -t node-api .
+$ docker build -t node-api .
 ```
 
 ```bash
-docker run -it --rm -v "$(pwd):/app" node-api
+$ docker run --rm -it -p 9001:3000 -v "$(pwd):/app" node-api
 ```
 
 ### Integrantes del proyecto 
