@@ -11,13 +11,16 @@ const info = require(path.join(__dirname,'./utils/info'));
 app.use(morgan('dev'))
 
 // routes
-app.get('/:dirInicio/:dirDestino', (req, res) => {
+app.get('/:dirInicio/:dirDestino', async (req, res) => {
+
     const direccionInicio = req.params.dirInicio;
     const direccionDestino= req.params.dirDestino;
-    console.log('entrando');
+
     if (direccionInicio && direccionDestino ) {
-      var recorrido = info.getInfo(direccionInicio, direccionDestino);
+      var recorrido = await info.getInfo(direccionInicio, direccionDestino);
+      console.log(recorrido);
       res.send(recorrido);
+      
     } else {
         res.status(500).json({error: 'No se han ingresado las dos variables'});
     }

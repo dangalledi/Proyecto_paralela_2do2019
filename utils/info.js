@@ -14,6 +14,7 @@ async function getInfo (direccionInicio, direccionDestino){
       //Busca en paralelo ambas direcciones los paraderos mas cercanos
       const paraderos = await Promise.all([menDistancia.menDistancia(direcciones[0]), menDistancia.menDistancia(direcciones[1])]);
       console.log(paraderos);
+      console.log();
   
       //Busca mach de paraderos segun las micros 
       const bus = await mach.getBuses(paraderos);

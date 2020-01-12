@@ -17,8 +17,8 @@ function getBuses (paraderos){
             for(var k=0; k< busesParFinal[i].length; k++){
                 for(var o=0; o< busesParFinal[j].length; o++){
                     if (busesParInicial[i][k]=== busesParFinal[j][k]){
-                        console.log ('hay un puto mach');
                         var bus = busesParInicial[i][k];
+                        console.log();
                         console.log(bus);
                         return bus;
                     }
