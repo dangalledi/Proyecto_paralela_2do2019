@@ -7,19 +7,26 @@ const app = express();
 const path = require('path');
 const info = require(path.join(__dirname,'./utils/info'));
 
+// settings
+app.set('port', process.env.PORT || 3000);
+
 // middlewares
 app.use(morgan('dev'))
 
 // routes
 app.get('/:dirInicio/:dirDestino', async (req, res) => {
 
-    const direccionInicio = req.params.dirInicio;
-    const direccionDestino= req.params.dirDestino;
+    const direccionInicio = req.params.dirInicio +',santiago,chile';
+    const direccionDestino= req.params.dirDestino +',santiago,chile';
 
     if (direccionInicio && direccionDestino ) {
-      var recorrido = await info.getInfo(direccionInicio, direccionDestino);
-      console.log(recorrido);
-      res.send(recorrido);
+      try{
+        var recorrido = await info.getInfo(direccionInicio, direccionDestino);
+        console.log(recorrido);
+        res.json(recorrido);
+      }catch(e){
+        console.log(e);
+      }
       
     } else {
         res.status(500).json({error: 'No se han ingresado las dos variables'});
@@ -32,6 +39,6 @@ app.get('/hola', function (req, res) {
 
 
 // Starting the server
-app.listen(3000, () => {
-  console.log("Server on port 3000");
+app.listen(app.get('port'), () => {
+	console.log(`Server on port ${app.get('port')}`);
 });
