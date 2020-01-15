@@ -1,10 +1,5 @@
-const fs = require('fs');
-const path = require('path');
 
 function getBuses (paraderos){
-    
-    const json_paradas = fs.readFileSync(path.join(__dirname,'../data/paradas.json' ), 'utf-8');
-    let paradas = JSON.parse(json_paradas);
 
     var busesParInicial = [paraderos[0].paraderoBuses,paraderos[0].paraderoBuses1];
     var busesParFinal = [paraderos[1].paraderoBuses,paraderos[1].paraderoBuses1];
@@ -23,17 +18,20 @@ function getBuses (paraderos){
                             bus,
                             dir
                         }         
-                    }
-                    else{       
-
-                    }
-                 }
+                    }  
+                }
+            }
             
-             }
-         }
-    return 0;
+        }
+    }
+        bus = 'cero';
+        dir = ['너는 나를 용서해','यह कोशिश की गई थी'];
+    return {
+        bus,
+        dir
     }
 }
+
 
 module.exports = {
     getBuses
