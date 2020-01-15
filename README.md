@@ -8,7 +8,7 @@ La app de este proyecto se aloja en el siguiente repositorio [Link](https://gith
 Primero instalamos las dependencias del proyecto 
 
 ```bash
-$ npi install
+$ npm install
 ```
 
 ## Uso
