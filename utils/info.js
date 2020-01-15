@@ -37,6 +37,42 @@ async function getInfo (direccionInicio, direccionDestino){
     }
   }
 
+  async function getInfoCoor (coorInicio, direccionDestino){
+    try{
+      console.log(coorInicio);
+      const latlongInicio = coorInicio;//.split(",");
+      console.log(latlongInicio);
+
+      console.log();
+      console.time('Measuring time');
+      //Busca en paralelo ambas direcciones las coordenadas respectivas
+      console.log('direcciones de get coordenadas');
+      const direccion = await Promise.all( get.getCoordenadas(direccionDestino));
+      console.log(direccion);
+      console.log('direcciones de get coordenadas');
+      console.log();
+
+      //Busca en paralelo ambas direcciones los paraderos mas cercanos
+      console.log('paraderos de mendistancia');
+      const paraderos = await Promise.all([menDistancia.menDistancia(latlongInicio), menDistancia.menDistancia(direccion)]);
+      console.log(paraderos);
+      console.log('paraderos de mendistancia');
+      console.log();
+  
+      //Busca mach de paraderos segun las micros 
+      console.log('buses de get buses');
+      const bus = await mach.getBuses(paraderos);
+      console.log(bus.bus);
+      console.log(bus.dir);
+      console.log('buses de get buses');
+      return bus;
+  
+    } catch (e) {
+      console.log(e);
+      console.log(`No se pudo obtener informacion de ${coorInicio} y ${direccionDestino}`)
+    }
+  }
 module.exports = {
-    getInfo
+    getInfo,
+    getInfoCoor
 }
