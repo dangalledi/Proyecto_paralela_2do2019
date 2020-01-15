@@ -12,7 +12,7 @@ function getBuses (paraderos){
     const dirParInicial = [paraderos[0].paraderoDireccion,paraderos[0].paraderoDireccion1];
     const dirParFinal = [paraderos[1].paraderoDireccion,paraderos[1].paraderoDireccion1];
 
-    for (var i=0; i < busesParInicial.length; i++ ){
+    for (var i=0; i < busesParInicial.length; i++ ){    // Solo busca un mach 
         for (var j=0; j< busesParFinal.length; j++){
             for(var k=0; k< busesParInicial[i].length; k++){
                 for(var o=0; o< busesParFinal[j].length; o++){
@@ -24,7 +24,7 @@ function getBuses (paraderos){
                             dir
                         }         
                     }
-                    else{
+                    else{       
 
                     }
                  }
